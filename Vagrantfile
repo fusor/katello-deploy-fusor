@@ -1,8 +1,8 @@
-module RHCI
+module Fusor
 
   Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-    NAME        = 'rhci'
+    NAME        = 'fusor'
     PARENT_NAME = 'centos6-devel'
     BOX         = KatelloDeploy::BOXES.find { |b| b.fetch(:name) == PARENT_NAME }.merge(:name => NAME)
 
@@ -11,7 +11,7 @@ module RHCI
     config.vm.define NAME do |machine|
       machine.vm.provision :shell do |shell|
         # sample RHCI setup
-        shell.inline = 'echo doing RHCI setup'
+        shell.inline = 'echo doing Fusor setup'
         config.vm.synced_folder '../rhci', '/home/vagrant/rhci'
       end
     end
